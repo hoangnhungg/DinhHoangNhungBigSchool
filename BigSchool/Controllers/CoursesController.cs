@@ -30,6 +30,7 @@ namespace BigSchool.Controllers
           
         
         [HttpPost] // nhận từ Vỉew đã gọi ra
+        [ValidateAntiForgeryToken] //Phòng chống lỗi tấn công CROSS SITE REQUEST FORGERY - CSRF (Dữ liệu được gửi lên server, không phải từ web page trong hệ thống)
         public ActionResult Create(CourseViewModel viewModel)
         {
             if (!ModelState.IsValid)

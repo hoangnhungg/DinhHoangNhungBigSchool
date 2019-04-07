@@ -8,6 +8,7 @@
 <form>
 @using (Html.BeginForm("Create", "Courses")) //Action Method, Controller Name
 {
+    @Html.AntiForgeryToken() // Phòng chống lỗi tấn công CROSS SITE REQUEST FORGERY - CSRF (Dữ liệu được gửi lên server, không phải từ web page trong hệ thống)
     <div class="form-group">
         @Html.LabelFor(m => m.Place)
         @Html.TextBoxFor(m => m.Place, new { @class = "form-control" })
@@ -29,6 +30,10 @@
         @Html.ValidationMessageFor(m => m.Category)
     </div>
     <button type="submit" value="Save" class="btn btn-primary">Save</button> 
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
 }
 </form>
 
